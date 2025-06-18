@@ -43,9 +43,9 @@ class LogRecordObject:
     body: pd.DataFrame = field(default_factory=pd.DataFrame)
     labels: pd.DataFrame = field(default_factory=pd.DataFrame)
     _index: np.array = field(init=False)
+
     def __post_init__(self):
         self._index = pd.DataFrame(self.body.index.values)
-
         for field in self.__dataclass_fields__:
             field_content = getattr(self, field)
             if not field_content.empty:
