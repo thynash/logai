@@ -33,6 +33,7 @@ class LogRecordObject:
         whether each line is anomalous or not).
     :param _index: The indices of the log data.
     """
+
     timestamp: pd.DataFrame = field(default_factory=pd.DataFrame)
     attributes: pd.DataFrame = field(default_factory=pd.DataFrame)
     resource: pd.DataFrame = field(default_factory=pd.DataFrame)
@@ -43,7 +44,6 @@ class LogRecordObject:
     body: pd.DataFrame = field(default_factory=pd.DataFrame)
     labels: pd.DataFrame = field(default_factory=pd.DataFrame)
     _index: np.array = field(init=False)
-
     def __post_init__(self):
         self._index = pd.DataFrame(self.body.index.values)
         for field in self.__dataclass_fields__:
